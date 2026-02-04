@@ -1,0 +1,20 @@
+.header-container {
+  background-color: #ffffff;
+  color: #1f2937;
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.header-description {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #4b5563;
+}
