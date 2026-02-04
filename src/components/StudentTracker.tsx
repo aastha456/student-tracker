@@ -15,7 +15,7 @@ interface Student {
 const INITIAL_STUDENTS: Student[] = [
   {
     id: "s1",
-    name: "Soni Shah",
+    name: "Ram Shakya",
     grade: "A",
     phoneNumber: "9876543210",
     rollNumber: 101,
@@ -28,6 +28,14 @@ const INITIAL_STUDENTS: Student[] = [
     phoneNumber: "9123456780",
     rollNumber: 102,
     gender: "Female",
+  },
+  {
+    id: "s3",
+    name: "Shyam Tiwari",
+    grade: "A",
+    phoneNumber: "9123456780",
+    rollNumber: 103,
+    gender: "Male",
   },
 ];
 
@@ -46,7 +54,7 @@ const StudentTracker = () => {
 
         {students.map((student) => (
           <div className="student-item" key={student.id}>
-            <p>{student.name}</p>
+            <p className="student-name">{student.name}</p>
             <p>Roll No: {student.rollNumber}</p>
             <p>Grade: {student.grade}</p>
             <p>Phone: {student.phoneNumber}</p>
