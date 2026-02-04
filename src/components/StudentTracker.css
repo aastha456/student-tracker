@@ -1,0 +1,35 @@
+.student-tracker {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.student-list {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 12px;
+  background-color: #f9fafb;
+  text-align: left;
+}
+
+.student-item p {
+  margin: 4px 0;
+  font-size: 14px;
+  
+}
+
+.student-name {
+  color: red;
+  font-weight: bold;
+  font-style: italic;
+}
+
+
