@@ -8,8 +8,8 @@ interface HeaderProps {
 const Header = ({title, description}: HeaderProps) => {
     return (
         <header className="header-container">
-            <h1 className="header-title">{title}</h1>
-            <p className="header-description">{description}</p>
+            <h1 className="header__title">{title}</h1>
+            <p className="header__description">{description}</p>
         </header>
     )
 }

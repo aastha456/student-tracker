@@ -7,13 +7,13 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.header-title {
+.header__title {
   margin: 0;
   font-size: 28px;
   font-weight: 600;
 }
 
-.header-description {
+.header__description {
   margin-top: 8px;
   font-size: 16px;
   color: #4b5563;
