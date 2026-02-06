@@ -4,6 +4,45 @@
   gap: 24px;
 }
 
+.student-tracker-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f4f4f4;
+  padding: 16px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.student-tracker-form input, 
+.student-tracker-form select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.student-tracker-form input:focus,
+.student-tracker-form select:focus {
+  border-color: #2563eb;
+}
+
+.student-tracker-form__submit {
+  padding: 10px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.student-tracker-form__submit:hover {
+  background-color: #1e40af;
+}
 .student-list {
   background-color: #ffffff;
   padding: 20px;
@@ -12,24 +51,50 @@
 }
 
 .student-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
   padding: 12px;
   margin-top: 12px;
   background-color: #f9fafb;
   text-align: left;
+  gap: 12px;
+}
+.student-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+
 }
 
-.student-item p {
+.student-details {
+  flex: 1;
+}
+.student-details p {
   margin: 4px 0;
   font-size: 14px;
   
 }
 
 .student-name {
-  color: red;
+  color: #111827;
   font-weight: bold;
-  font-style: italic;
+}
+
+.student-item__delete {
+  background-color: transparent;
+  color: #ef4444;
+  border: none;
+  cursor: pointer;
+  font-size: 18px; 
+  transition: color 0.2s;
+}
+
+.student-item__delete:hover {
+  color: #dc2626;
 }
 
 
