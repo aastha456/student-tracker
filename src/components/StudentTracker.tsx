@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import "./StudentTracker.css";
 import { FaTrash } from "react-icons/fa";
 
@@ -45,12 +45,39 @@ const INITIAL_STUDENTS: Student[] = [
 ];
 
 const StudentTracker = () => {
-  const [students, setStudents] = useState<Student[]>(INITIAL_STUDENTS);
+  const [students, setStudents] = useState<Student[]>([]);
   const [name, setName] = useState("");
   const [grade, setGrade] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [rollNumber, setRollNumber] = useState<number>();
+  const [rollNumber, setRollNumber] = useState<number>(0);
   const [gender, setGender] = useState<Gender>("Male");
+
+  useEffect(() => {
+    const storedStudents = localStorage.getItem("students");
+
+    if (storedStudents) {
+      try {
+        const parsed: Student[] = JSON.parse(storedStudents);
+        setStudents(parsed);
+      } catch (error) {
+        console.error("JSON parse error", error);
+        setStudents(INITIAL_STUDENTS);
+        localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS))
+      }
+    }
+    else{
+      localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS))
+      setStudents(INITIAL_STUDENTS);
+    }
+
+  }, []);
+
+  useEffect(() => {
+    if (students.length === 0){
+      return;
+    }
+    localStorage.setItem("students", JSON.stringify(students))
+  }, [students])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     // console.clear();
@@ -83,8 +110,7 @@ const StudentTracker = () => {
     setGender("Male");
     setGrade("");
     setPhoneNumber("");
-    setRollNumber(undefined);
-
+    setRollNumber(0);
 
   }
 
@@ -96,8 +122,7 @@ const StudentTracker = () => {
 
   return (
     <div className="student-tracker">
-      <div>
-        
+      <div> 
         <form className="student-tracker-form" onSubmit={handleSubmit}>
           <input type="text"
           placeholder="Enter Student Name ..."
