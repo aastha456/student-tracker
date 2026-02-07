@@ -45,32 +45,50 @@ const INITIAL_STUDENTS: Student[] = [
 ];
 
 const StudentTracker = () => {
-  const [students, setStudents] = useState<Student[]>([]);
+  // const [students, setStudents] = useState<Student[]>([]);
+  // loading the initial value from local storage
+  const [students, setStudents] = useState<Student[]>(() => {
+    const storedStudents = localStorage.getItem("students");
+    
+    if (storedStudents) {
+      try {
+        return JSON.parse(storedStudents);
+      } catch (error) {
+        console.error("JSON parse error", error);
+        localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS));
+        return INITIAL_STUDENTS;
+      }
+    } else {
+      localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS));
+      return INITIAL_STUDENTS;
+    }
+  });
+
   const [name, setName] = useState("");
   const [grade, setGrade] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [rollNumber, setRollNumber] = useState<number>(0);
   const [gender, setGender] = useState<Gender>("Male");
 
-  useEffect(() => {
-    const storedStudents = localStorage.getItem("students");
+  // useEffect(() => {
+  //   const storedStudents = localStorage.getItem("students");
 
-    if (storedStudents) {
-      try {
-        const parsed: Student[] = JSON.parse(storedStudents);
-        setStudents(parsed);
-      } catch (error) {
-        console.error("JSON parse error", error);
-        setStudents(INITIAL_STUDENTS);
-        localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS))
-      }
-    }
-    else{
-      localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS))
-      setStudents(INITIAL_STUDENTS);
-    }
+  //   if (storedStudents) {
+  //     try {
+  //       const parsed: Student[] = JSON.parse(storedStudents);
+  //       setStudents(parsed);
+  //     } catch (error) {
+  //       console.error("JSON parse error", error);
+  //       setStudents(INITIAL_STUDENTS);
+  //       localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS))
+  //     }
+  //   }
+  //   else{
+  //     localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS))
+  //     setStudents(INITIAL_STUDENTS);
+  //   }
 
-  }, []);
+  // }, []);
 
   useEffect(() => {
     if (students.length === 0){
