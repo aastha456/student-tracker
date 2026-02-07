@@ -49,7 +49,6 @@ const StudentTracker = () => {
   // loading the initial value from local storage
   const [students, setStudents] = useState<Student[]>(() => {
     const storedStudents = localStorage.getItem("students");
-    
     if (storedStudents) {
       try {
         return JSON.parse(storedStudents);
@@ -69,7 +68,8 @@ const StudentTracker = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [rollNumber, setRollNumber] = useState<number>(0);
   const [gender, setGender] = useState<Gender>("Male");
-
+  
+  // // Replaced with lazy initialization in useState to avoid unnecessary re-renders and setState warnings
   // useEffect(() => {
   //   const storedStudents = localStorage.getItem("students");
 
@@ -94,7 +94,7 @@ const StudentTracker = () => {
     if (students.length === 0){
       return;
     }
-    localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS))
+    localStorage.setItem("students", JSON.stringify(students))
   }, [students])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
