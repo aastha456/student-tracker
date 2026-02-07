@@ -76,7 +76,7 @@ const StudentTracker = () => {
     if (students.length === 0){
       return;
     }
-    localStorage.setItem("students", JSON.stringify(students))
+    localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS))
   }, [students])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
