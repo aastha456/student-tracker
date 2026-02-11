@@ -15,6 +15,8 @@ const StudentForm = ({ onAddStudent }: StudentFormProps) => {
   const [rollNumber, setRollNumber] = useState<number | "">("");
   const [gender, setGender] = useState<Gender>("Male");
 
+  const[photoPreview, setPhotoPreview] = useState<string>("");
+
   // Runs when form is submitted
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();// stop page reload
@@ -37,7 +39,7 @@ const StudentForm = ({ onAddStudent }: StudentFormProps) => {
       phoneNumber,
       rollNumber,
       gender,
-      photo: "https://via.placeholder.com/50",
+      photo: photoPreview || "https://via.placeholder.com/50",
     };
     //send student data to parent component
     onAddStudent(newStudent);
@@ -48,6 +50,15 @@ const StudentForm = ({ onAddStudent }: StudentFormProps) => {
     setPhoneNumber("");
     setRollNumber("");
     setGender("Male");
+    setPhotoPreview("");
+  };
+
+   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    // Create preview URL
+    const imageUrl = URL.createObjectURL(file);
+    setPhotoPreview(imageUrl);
   };
 
   return (
@@ -78,8 +89,11 @@ const StudentForm = ({ onAddStudent }: StudentFormProps) => {
       <input
         type="text"
         placeholder="Phone Number"
+        maxLength={10}
         value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
+        onChange={(e) =>{
+          const value = e.target.value.replace(/\D/g, "");
+          setPhoneNumber(value)}}
       />
 
       <select value={gender} onChange={(e) => setGender(e.target.value as Gender)}>
@@ -87,6 +101,23 @@ const StudentForm = ({ onAddStudent }: StudentFormProps) => {
         <option value="Female">Female</option>
         <option value="Other">Other</option>
       </select>
+
+      <input type="file" accept="image/*" onChange={handleImageChange} />
+
+      {/* Image preview */}
+      {photoPreview && (
+        <img
+          src={photoPreview}
+          alt="Preview"
+          style={{
+            width: "100px",
+            height: "100px",
+            objectFit: "cover",
+            borderRadius: "50%",
+            alignSelf: "center",
+          }}
+        />
+      )}
 
       <button type="submit" className="student-tracker-form__submit">
         Submit
