@@ -1,0 +1,116 @@
+
+.student-tracker {
+  margin: 20px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.student-tracker-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.student-tracker-form input,
+.student-tracker-form select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.student-tracker-form input:focus,
+.student-tracker-form select:focus {
+  border-color: #2563eb;
+}
+
+.student-tracker-form__submit {
+  padding: 12px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.student-tracker-form__submit:hover {
+  background-color: #1e40af;
+}
+
+.student-tracker-form img {
+  margin: 10px auto;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+
+.student-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f9fafb;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.student-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px;
+  background-color: #ffffff;
+  gap: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.student-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.student-item p {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #374151;
+}
+
+.student-name {
+  font-weight: bold;
+  color: #111827;
+  font-size: 16px;
+}
+
+
+.student-item__delete {
+  background-color: transparent;
+  color: #ef4444;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: color 0.2s;
+}
+
+.student-item__delete:hover {
+  color: #dc2626;
+}

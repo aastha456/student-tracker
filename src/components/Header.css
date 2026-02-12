@@ -1,37 +1,72 @@
 .header-container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 16px;
   background-color: #ffffff;
-  color: #1f2937;
-  padding: 24px;
+  padding: 20px 32px;
   border-radius: 8px;
   margin-bottom: 24px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.header-logo{
-  width: 60px;
-  height: 60px;
+/* LEFT SIDE (Logo + Title Together) */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 🔥 small gap between logo and title */
+}
+
+/* Logo */
+.header-logo {
+  width: 55px;
+  height: 55px;
   object-fit: contain;
   border-radius: 8px;
 }
 
-.header-text{
-  display: flex;
-  flex-direction: column;
+/* Remove underline from links */
+.header-logo-link,
+.header-title-link {
+  text-decoration: none;
+  color: inherit;
   text-align: left;
-
 }
 
-.header__title {
+/* Title */
+.header-title-link h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
 }
 
-.header__description {
-  margin-top: 8px;
-  font-size: 16px;
-  color: #4b5563;
+/* Description */
+.header-title-link p {
+  margin: 2px 0 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* RIGHT SIDE NAV */
+.header__right {
+  display: flex;
+  gap: 16px;
+}
+
+.header__right a {
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.header__right a:hover {
+  background-color: #f3f4f6;
+}
+
+.header__right .active {
+  background-color: #3b82f6;
+  color: white;
 }

@@ -7,7 +7,7 @@
 .app-container {
     padding: 40px 32px;
     background-color: #6397cc;
-    border: 1px solid black;
+    max-width: 1100px;
     border-radius: 8px;
     margin: 60px auto;
     overflow: auto;

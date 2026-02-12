@@ -1,10 +1,7 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import "./StudentTracker.css";
-import StudentForm from "./StudentForm";
-import StudentList from "./StudentList";
-import type {Student} from './types'
+import type { Student, Gender } from "./types";
 
-//initila data shown in first load
 const INITIAL_STUDENTS: Student[] = [
   {
     id: "s1",
@@ -36,8 +33,6 @@ const INITIAL_STUDENTS: Student[] = [
 ];
 
 const StudentTracker = () => {
-  // loading the initial value from local storage
-  // main state
   const [students, setStudents] = useState<Student[]>(() => {
     const storedStudents = localStorage.getItem("students");
     if (storedStudents) {
@@ -45,36 +40,124 @@ const StudentTracker = () => {
         return JSON.parse(storedStudents);
       } catch (error) {
         console.error("JSON parse error", error);
-        localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS));
         return INITIAL_STUDENTS;
       }
-    } else {
-      localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS));
-      return INITIAL_STUDENTS;
     }
+    return INITIAL_STUDENTS;
   });
 
-  // Save students to localStorage whenever state changes
+  const [name, setName] = useState("");
+  const [grade, setGrade] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [rollNumber, setRollNumber] = useState<number | "">("");
+  const [gender, setGender] = useState<Gender>("Male");
+
+  // Save students to localStorage whenever they change
   useEffect(() => {
-    if (students.length === 0){
+    localStorage.setItem("students", JSON.stringify(students));
+  }, [students]);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!name.trim()) {
+      alert("Name is required");
       return;
     }
-    localStorage.setItem("students", JSON.stringify(students))
-  }, [students])
 
-  // add student to the list 
-  const addStudent =(student: Student) => {
-    setStudents((prev) => [...prev, student]);
-  }
-  // delete student by id
+    if (rollNumber === "" || rollNumber <= 0) {
+      alert("Valid roll number is required");
+      return;
+    }
+
+    const studentToAdd: Student = {
+      id: crypto.randomUUID(),
+      name,
+      grade,
+      phoneNumber,
+      rollNumber: Number(rollNumber),
+      gender,
+      photo: "https://via.placeholder.com/50",
+    };
+
+    setStudents((prev) => [...prev, studentToAdd]);
+
+    // Reset form
+    setName("");
+    setGrade("");
+    setPhoneNumber("");
+    setRollNumber("");
+    setGender("Male");
+  };
+
   const deleteStudent = (id: string) => {
     setStudents((prev) => prev.filter((s) => s.id !== id));
   };
 
   return (
     <div className="student-tracker">
-      <StudentForm onAddStudent={addStudent}/>
-      <StudentList students={students} onDelete={deleteStudent}/>
+      <div>
+        <h2>Student Form</h2>
+        <form className="student-tracker-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Enter Student Name ..."
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+
+          <input
+            type="number"
+            placeholder="Roll number"
+            value={rollNumber}
+            onChange={(e) =>
+              setRollNumber(e.target.value === "" ? "" : Number(e.target.value))
+            }
+          />
+
+          <input
+            type="text"
+            placeholder="Grade"
+            value={grade}
+            onChange={(e) => setGrade(e.target.value)}
+          />
+
+          <input
+            type="text"
+            placeholder="Phone Number"
+            maxLength={10}
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ""))}
+          />
+
+          <select value={gender} onChange={(e) => setGender(e.target.value as Gender)}>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <button type="submit" className="student-tracker-form__submit">
+            Submit
+          </button>
+        </form>
+      </div>
+
+      <div className="student-list">
+        <h2>Student List</h2>
+        {students.map((student) => (
+          <div className="student-item" key={student.id}>
+            <img src={student.photo || "https://via.placeholder.com/50"} alt={student.name} />
+            <div>
+              <p>{student.name}</p>
+              <p>Roll No: {student.rollNumber}</p>
+              <p>Grade: {student.grade}</p>
+              <p>Phone: {student.phoneNumber}</p>
+              <p>Gender: {student.gender}</p>
+            </div>
+            <button onClick={() => deleteStudent(student.id)}>Delete</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
