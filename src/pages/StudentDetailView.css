@@ -1,0 +1,78 @@
+.student-detail {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  max-width: 1280px;
+  margin: 40px auto;
+}
+
+.student-detail img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #d6d6d6;
+}
+
+
+.student-detail__info {
+  flex: 1;
+  text-align: left;
+}
+
+.student-detail__info p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #374151;
+}
+
+.student-detail__info p:first-child {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.student-detail__actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+
+.student-detail__edit,
+.student-detail__delete {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+.student-detail__edit {
+  background-color: #2563eb;
+  color: white;
+}
+
+.student-detail__edit:hover {
+  background-color: #1e40af;
+  transform: translateY(-2px);
+}
+
+/* Delete Button */
+.student-detail__delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+.student-detail__delete:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+}

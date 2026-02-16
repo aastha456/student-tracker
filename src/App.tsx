@@ -1,9 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import StudentList from "./pages/StudentList";
-import StudentForm from "./pages/StudentForm";
+import StudentFormPage from "./pages/StudentFormPage";
+// import StudentForm from "./components/StudentForm"
 import "./App.css";
 import "./reset.css";
+import StudentDetailView from "./pages/StudentDetailView"
+import StudentEdit from "./pages/StudentEdit"
+import StudentDetailLayout from "./pages/StudentDetailLayout";
 
 function App() {
   return (
@@ -17,9 +21,14 @@ function App() {
 
         <Routes>
           <Route index element={<StudentList />} />
-          <Route path="/list" element={<StudentList />} />
-          <Route path="/add" element={<StudentForm />} /> 
-        </Routes>
+          <Route path="list" element={<StudentList />} />
+          <Route path="/add" element={<StudentFormPage />} /> 
+
+          <Route path="/student/:id" element={<StudentDetailLayout/>}>
+          <Route index element = {<StudentDetailView/>}></Route>
+          <Route path="edit" element={<StudentEdit/>}></Route>
+        </Route>
+        </Routes>      
       </div>
     </BrowserRouter>
   );

@@ -1,0 +1,115 @@
+.student-tracker-form {
+  width: 100%;
+  max-width: 1280px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.student-tracker-form__group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.student-tracker-form__group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.student-tracker-form__group input,
+.student-tracker-form__group select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border 0.2s ease;
+}
+
+.student-tracker-form__group input:focus,
+.student-tracker-form__group select:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.student-tracker-form__submit {
+  width: 100%;
+  padding: 10px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.student-tracker-form__submit:hover {
+  background-color: #4338ca;
+}
+
+.student-tracker-form__submit:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.student-item-list {
+  width: 100%;
+  max-width: 1280px;
+  margin: 40px auto 60px;
+}
+
+.student-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.student-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
+}
+
+.student-item__info {
+  flex: 1;
+  cursor: pointer;
+}
+
+.student-item__info h3 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.student-item__info p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #6b7280;
+}
+
+.student-item__delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.student-item__delete:hover {
+  background-color: #fee2e2;
+}
+
+

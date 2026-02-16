@@ -1,0 +1,86 @@
+
+.student-tracker-edit {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+
+.student-tracker-form {
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.student-tracker-form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.student-tracker-form input,
+.student-tracker-form select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.student-tracker-form input:focus,
+.student-tracker-form select:focus {
+  border-color: #2563eb;
+}
+
+
+.student-tracker-form__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+
+.student-tracker-form__submit {
+  padding: 10px 16px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.student-tracker-form__submit:hover {
+  background-color: #1e40af;
+}
+
+
+.student-tracker-form__cancel {
+  padding: 10px 16px;
+  background-color: #e5e7eb;
+  color: #111827;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.student-tracker-form__cancel:hover {
+  background-color: #d1d5db;
+}

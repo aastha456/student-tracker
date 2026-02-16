@@ -44,10 +44,11 @@ const useStudents = () => {
     localStorage.setItem("students", JSON.stringify(INITIAL_STUDENTS));
     return INITIAL_STUDENTS;
   });
+  
   useEffect(() => {
-    if (students.length === 0){
-      return;
-    }
+    // if (students.length === 0){
+    //   return;
+    // }
     localStorage.setItem("students", JSON.stringify(students))
   }, [students])
   
@@ -59,8 +60,16 @@ const useStudents = () => {
   const deleteStudent = (id: string) => {
     setStudents((prev) => prev.filter((s) => s.id !== id));
   };
+
+  const updateStudent = (updated: Student) => {
+  setStudents(prev =>
+    prev.map(student =>
+      student.id === updated.id ? updated : student
+    )
+  );
+};
   return (
-    {addStudent, deleteStudent, students}
+    {updateStudent, addStudent, deleteStudent, students, setStudents}
   )
 }
 
