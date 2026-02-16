@@ -199,13 +199,13 @@
 // // export default StudentEdit;
 
 import { useParams, useNavigate } from "react-router-dom";
-import useStudents from "../hooks/useStudents";
+import { useStudentContext } from "../context/StudentContextProvider";
 import StudentForm from "../components/StudentForm";
 import type { Student } from "../components/types";
 
 const StudentEdit = () => {
   const { id } = useParams();
-  const { students, updateStudent } = useStudents();
+  const { students, updateStudent } = useStudentContext();
   const navigate = useNavigate();
 
   const student = students.find(s => s.id === id);

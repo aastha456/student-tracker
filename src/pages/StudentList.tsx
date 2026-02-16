@@ -1,9 +1,9 @@
-import useStudents from "../hooks/useStudents";
+import { useStudentContext }from "../context/StudentContextProvider";
 import Student from "../components/Student";
 import "./StudentList.css"
 
 const StudentList = () => {
-  const { students, deleteStudent} = useStudents();
+  const { students, deleteStudent} = useStudentContext();
   if(students.length === 0 ){
     return (
       <p className="student-list__empty">

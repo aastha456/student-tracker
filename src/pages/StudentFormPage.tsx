@@ -138,12 +138,12 @@
 // export default StudentFormPage;
 
 import { useNavigate } from "react-router";
-import useStudents from "../hooks/useStudents";
+import { useStudentContext } from "../context/StudentContextProvider";
 import StudentForm from "../components/StudentForm";
 import type { Student } from "../components/types";
 
 const StudentFormPage = () => {
-  const { addStudent } = useStudents();
+  const { addStudent } = useStudentContext();
   const navigate = useNavigate();
 
   const handleAdd = (data: Student) => {
