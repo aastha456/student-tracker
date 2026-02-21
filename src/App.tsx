@@ -4,7 +4,7 @@ import StudentList from "./pages/StudentList";
 import StudentFormPage from "./pages/StudentFormPage";
 // import StudentForm from "./components/StudentForm"
 import "./App.css";
-import "./reset.css";
+
 import StudentDetailView from "./pages/StudentDetailView"
 import StudentEdit from "./pages/StudentEdit"
 import StudentDetailLayout from "./pages/StudentDetailLayout";
