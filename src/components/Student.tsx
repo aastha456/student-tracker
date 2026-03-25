@@ -12,7 +12,7 @@ const Student = ({ student, onDelete }: StudentProps) => {
   const navigate = useNavigate();
 
   const handleNavigation = () => {
-    navigate(`/student/${student.id}`);
+    navigate(`/student/${student._id}`);
   };
 
   return (
@@ -39,7 +39,7 @@ const Student = ({ student, onDelete }: StudentProps) => {
 
       <button
         className="student-item__delete"
-        onClick={() => onDelete(student.id)}
+        onClick={() => onDelete(student._id)}
       >
         <FaTrash />
       </button>

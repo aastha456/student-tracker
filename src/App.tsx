@@ -4,6 +4,7 @@ import StudentList from "./pages/StudentList";
 import StudentFormPage from "./pages/StudentFormPage";
 // import StudentForm from "./components/StudentForm"
 import "./App.css";
+import './reset.css';
 
 import StudentDetailView from "./pages/StudentDetailView"
 import StudentEdit from "./pages/StudentEdit"
@@ -16,7 +17,7 @@ function App() {
         <Header
           title="Student Tracker"
           description="This is a simple student tracker"
-          logo="https://www.skoolbeep.com/student-tracking-system/assets/img/icon/featured-img/student-traking.png"
+          logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs1ouhTQJ1Cadd2QL0rQdDE8cVTp_SigGKqA&s"
         />
 
         <Routes>

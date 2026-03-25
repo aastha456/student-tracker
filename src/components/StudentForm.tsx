@@ -22,8 +22,7 @@ const StudentForm = ({ initialData, onSubmit }: StudentFormProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const studentData: Student = {
-      id: initialData?.id || crypto.randomUUID(),
+    const studentData = {
       name,
       grade,
       phoneNumber,
@@ -32,7 +31,12 @@ const StudentForm = ({ initialData, onSubmit }: StudentFormProps) => {
       photo: photo || "https://via.placeholder.com/100",
     };
 
-    onSubmit(studentData);
+    if(initialData){
+      onSubmit({...studentData, _id: initialData._id});
+    } else {
+      onSubmit(studentData as Student);
+    }
+
   };
 
   return (

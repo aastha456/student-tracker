@@ -1,22 +1,24 @@
-import useStudents from "../hooks/useStudents"
+import { useAppSelector, useAppDispatch } from "../hooks/studentHooks";
+import { deleteStudent } from "../store/slices/studentSlice";
 import { useNavigate, useParams } from "react-router";
-import { useMemo} from "react";
-import type { Student } from "../components/types"
 import './StudentDetailView.css'
 
 const StudentDetailView = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const {deleteStudent} = useStudents();
+  // const {deleteStudent} = useStudents();
+  const dispatch = useAppDispatch();
 
-  const student = useMemo(() => {
-    const stored = localStorage.getItem("students");
-    if (stored){
-      const parsed: Student[] = JSON.parse(stored);
-      return parsed.find((student) => student.id === id);
-    }
-    return null;
-  },[id]);
+  // const student = useMemo(() => {
+  //   const stored = localStorage.getItem("students");
+  //   if (stored){
+  //     const parsed: Student[] = JSON.parse(stored);
+  //     return parsed.find((student) => student._id === id);
+  //   }
+  //   return null;
+  // },[id]);
+  const students = useAppSelector(state => state.students.students);
+const student = students.find(s => s._id === id);
 
   if(!student){
     return <div>Student not found</div>
@@ -27,7 +29,7 @@ const StudentDetailView = () => {
   }
 
   const handleDelete = () => {
-    deleteStudent(student.id);
+    dispatch(deleteStudent(student._id));
     navigate("/");
   }
 

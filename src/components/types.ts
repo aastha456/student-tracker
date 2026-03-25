@@ -2,7 +2,7 @@
  export type Gender = "Male" | "Female" | "Other"
  //interface define for student
  export interface Student {
-  id: string;
+  _id: string;
   name: string;
   grade: string;
   phoneNumber: string;

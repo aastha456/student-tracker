@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router";
-import { useStudentContext } from "../context/StudentContextProvider";
+import { createStudent } from "../store/slices/studentSlice";
+import { useAppDispatch } from "../hooks/studentHooks";
 import StudentForm from "../components/StudentForm";
 import type { Student } from "../components/types";
 
+
 const StudentFormPage = () => {
-  const { addStudent } = useStudentContext();
+  const dispatch = useAppDispatch();
+  
   const navigate = useNavigate();
 
   const handleAdd = (data: Student) => {
-    addStudent(data);
+    dispatch(createStudent(data));
     navigate("/");
   };
 

@@ -3,14 +3,14 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import './reset.css'
-import { StudentContextProvider } from "./context/StudentContextProvider.tsx"
-
+import { Provider } from 'react-redux'
+import { store } from './store/store.ts'
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-    <StudentContextProvider>
+        <Provider store={store}>    
         <App/>
-    </StudentContextProvider>
+        </Provider>
     </StrictMode>
  
 )

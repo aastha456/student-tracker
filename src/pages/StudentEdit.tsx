@@ -1,20 +1,22 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { useStudentContext } from "../context/StudentContextProvider";
+import { useParams,useNavigate } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../hooks/studentHooks";
+import { updateStudent } from "../store/slices/studentSlice";
 import StudentForm from "../components/StudentForm";
 import type { Student } from "../components/types";
 
 const StudentEdit = () => {
   const { id } = useParams();
-  const { students, updateStudent } = useStudentContext();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const students = useAppSelector(state => state.students.students);
 
-  const student = students.find(s => s.id === id);
+  const student = students.find(s => s._id === id);
 
   if (!student) return <div>Student Not Found</div>;
 
   const handleUpdate = (data: Student) => {
-    updateStudent(data);
-    navigate(`/student/${id}`);
+    dispatch(updateStudent(data));
+    navigate(`/student/${student._id}`);
   };
 
   return (

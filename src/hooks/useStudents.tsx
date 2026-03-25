@@ -3,7 +3,7 @@ import type {Student} from'../components/types'
 
 const INITIAL_STUDENTS: Student[] = [
   {
-    id: "s1",
+    _id: "s1",
     name: "Ram Shakya",
     grade: "A",
     phoneNumber: "9876543210",
@@ -12,7 +12,7 @@ const INITIAL_STUDENTS: Student[] = [
     photo: "https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80",
   },
   {
-    id: "s2",
+    _id: "s2",
     name: "Grishma Sunwar",
     grade: "B",
     phoneNumber: "9123456780",
@@ -21,7 +21,7 @@ const INITIAL_STUDENTS: Student[] = [
     photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
   },
   {
-    id: "s3",
+    _id: "s3",
     name: "Shyam Tiwari",
     grade: "A",
     phoneNumber: "9123456780",
@@ -57,14 +57,14 @@ const useStudents = () => {
     setStudents((prev) => [...prev, student]);
   }
   // delete student by id
-  const deleteStudent = (id: string) => {
-    setStudents((prev) => prev.filter((s) => s.id !== id));
+  const deleteStudent = (_id: string) => {
+    setStudents((prev) => prev.filter((s) => s._id !== _id));
   };
 
   const updateStudent = (updated: Student) => {
   setStudents(prev =>
     prev.map(student =>
-      student.id === updated.id ? updated : student
+      student._id === updated._id ? updated : student
     )
   );
 };

@@ -13,7 +13,7 @@
 .header-left {
   display: flex;
   align-items: center;
-  gap: 12px; /* 🔥 small gap between logo and title */
+  gap: 12px; 
 }
 
 /* Logo */
